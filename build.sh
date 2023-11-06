@@ -18,6 +18,7 @@ fi
 echo "Unzip SDK..."
 tar -xjf ./${sdk_name}.tar.bz2
 mv ./${sdk_name} /${sdk_name}
+rm ./${sdk_name}.tar.bz2
 
 # Determine packaging commands based on platform
 case $3 in
