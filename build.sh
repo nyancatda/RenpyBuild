@@ -7,7 +7,7 @@ sdk_name="renpy-${sdk_version}-sdk"
 
 # Download SDK
 echo "Download SDK..."
-if wget https://www.renpy.org/dl/${sdk_version}/${sdk_name}.tar.bz2; then
+if wget -q https://www.renpy.org/dl/${sdk_version}/${sdk_name}.tar.bz2; then
     echo "SDK downloaded successfully."
 else
     echo "SDK download failed."
@@ -33,8 +33,8 @@ esac
 echo "Build project..."
 if $build_cmd; then
     artifact_path=$(ls | grep '\-dists')
-    ::set-output name=artifact_path::$artifact_path
-    ::set-output name=version::${artifact_path%'-dists'}
+    echo ::set-output name=artifact_path::$artifact_path
+    echo ::set-output name=version::${artifact_path%'-dists'}
 else
     return 1
 fi
