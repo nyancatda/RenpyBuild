@@ -33,8 +33,9 @@ esac
 echo "Build project..."
 if $build_cmd; then
     artifact_path=$(ls | grep '\-dists')
-    echo ::set-output name=artifact_path::$artifact_path
-    echo ::set-output name=version::${artifact_path%'-dists'}
+    version=${artifact_path%'-dists'}
+    echo "artifact_path=$artifact_path" >> "$GITHUB_OUTPUT"
+    echo "version=$version" >> "$GITHUB_OUTPUT"
 else
     return 1
 fi
