@@ -4,8 +4,9 @@ project_path=$2
 target_platform=$3
 
 sdk_name="renpy-${sdk_version}-sdk"
+sdk_path="../${sdk_name}"
 
-if [ ! -d "/$sdk_name" ]; then
+if [ ! -d "../$sdk_name" ]; then
     # Download SDK
     echo "Download SDK..."
     if wget -q https://www.renpy.org/dl/${sdk_version}/${sdk_name}.tar.bz2; then
@@ -18,7 +19,7 @@ if [ ! -d "/$sdk_name" ]; then
     # Unzip SDK
     echo "Unzip SDK..."
     tar -xjf ./${sdk_name}.tar.bz2
-    mv ./${sdk_name} /${sdk_name}
+    mv ./${sdk_name} ${sdk_path}
     rm ./${sdk_name}.tar.bz2
 else
     echo "SDK already exists."
@@ -27,10 +28,10 @@ fi
 # Determine packaging commands based on platform
 case $3 in
     win | linux | mac | android | market | web)
-        build_cmd="/${sdk_name}/renpy.sh /${sdk_name}/launcher distribute --package ${target_platform} ${project_path}"
+        build_cmd="${sdk_path}/renpy.sh ${sdk_path}/launcher distribute --package ${target_platform} ${project_path}"
     ;;
     *)
-        build_cmd="/${sdk_name}/renpy.sh /${sdk_name}/launcher distribute ${project_path}"
+        build_cmd="${sdk_path}/renpy.sh ${sdk_path}/launcher distribute ${project_path}"
     ;;
 esac
 
