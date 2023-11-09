@@ -2,7 +2,7 @@
 GitHub action script for building your Ren'Py project
 
 ## Use
-``` yarn
+``` yml
 - name: Build
   uses: nyancatda/RenpyBuild@main
   with:
