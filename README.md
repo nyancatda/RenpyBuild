@@ -19,7 +19,7 @@ GitHub action script for building your Ren'Py project
 - `version` Project version
 
 ## Cache
-The script will store the downloaded SDK in `../renpy-${sdk_version}-sdk`, and you can configure the cache yourself
+The script will store the downloaded SDK in `~/renpy-${sdk_version}-sdk`, and you can configure the cache yourself
 
 ## Thank
 1. [ProjectAliceDev/renpy-build-action](https://github.com/ProjectAliceDev/renpy-build-action) Provides basic ideas
